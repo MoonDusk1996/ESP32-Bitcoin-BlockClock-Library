@@ -35,6 +35,7 @@ struct RecommendedFees {
   uint16_t medium;
   uint16_t low;
   uint16_t noPriority;
+  uint16_t minimum;
   bool error;
 };
 

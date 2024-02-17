@@ -64,15 +64,17 @@ void Screen::drawBlockHeightScreen(String blockHeight) {
 
 void Screen::drawRecommendedFeesScreen(RecommendedFees recommendedFees) {
   clearSpriteExceptBattery();
-  drawString("Recommended Fees:", 5, 10, 2);
+  drawString("Recommended Fees:", 20, 5, 2);
 
   if (recommendedFees.error == true) {
     drawString("Erro", 5, 50, 2);
   }
 
-  printFee("High", recommendedFees.high, 5, 50);
-  printFee("Medium", recommendedFees.medium, 5, 70);
-  printFee("Low", recommendedFees.low, 5, 90);
+  printFee("High", recommendedFees.high, 5, 35);
+  printFee("Medium", recommendedFees.medium, 5, 55);
+  printFee("Low", recommendedFees.low, 5, 75);
+  printFee("No Prio", recommendedFees.noPriority, 5, 95);
+  printFee("Minimum", recommendedFees.minimum, 5, 115);
   sprite->pushSprite(0, 0);
 }
 
@@ -118,7 +120,7 @@ void Screen::printFee(String text, uint16_t fee, int16_t x, int16_t y) {
   String feeString = String(fee);
 
   drawString(text + ": ", x, y, 2);
-  drawString(feeString + " sat/vB", x + 100, y, 2);
+  drawString(feeString + " sat/vB", x + 115, y, 2);
 }
 
 void Screen::drawnDateAndTimeScreen(String hours, String minutes,
@@ -141,10 +143,10 @@ void Screen::drawnWiFiDataScreen(WiFiData wifiData) {
     isConnected = "NO";
   }
 
-  drawString("WiFi information", 5, 10, 1);
-  drawString("Is connected: " + isConnected, 5, 20, 1);
-  drawString("Connected to: " + truncateString(wifiData.SSID), 5, 30, 1);
-  drawString("Signal strength: " + String(wifiData.SignalStrength), 5, 40, 1);
+  drawString("WiFi information", 5, 10, 2);
+  drawString("Is connected: " + isConnected, 5, 20, 2);
+  drawString("Connected to: " + truncateString(wifiData.SSID), 5, 30, 2);
+  drawString("Signal strength: " + String(wifiData.SignalStrength), 5, 40, 2);
   sprite->pushSprite(0, 0);
 }
 

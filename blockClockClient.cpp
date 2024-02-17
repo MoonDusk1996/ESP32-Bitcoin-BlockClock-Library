@@ -11,7 +11,7 @@
 const String MEMPOOL_BASEURL = "https://mempool.space/api";
 const String COINLIB_BASEURL = "https://coinlib.io/api/v1";
 
-ApiClient::ApiClient(const String& apiKey) : coinlibApiKey(apiKey) {}
+ApiClient::ApiClient(const String &apiKey) : coinlibApiKey(apiKey) {}
 
 String ApiClient::getBlockHeight() {
   http.begin(MEMPOOL_BASEURL + "/blocks/tip/height");
@@ -39,6 +39,7 @@ RecommendedFees ApiClient::getRecommendedFees() {
     recommendedFees.medium = httpResponseJson["halfHourFee"];
     recommendedFees.low = httpResponseJson["hourFee"];
     recommendedFees.noPriority = httpResponseJson["economyFee"];
+    recommendedFees.minimum = httpResponseJson["minimumFee"];
     recommendedFees.error = false;
 
     return recommendedFees;

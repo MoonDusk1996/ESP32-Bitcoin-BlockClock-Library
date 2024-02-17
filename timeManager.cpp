@@ -12,9 +12,9 @@
 #include <Arduino.h>
 #endif
 
-const long gmtOffset_sec = 0;
+const long gmtOffset_sec = -14400; // GMT -4
 const int daylightOffset_sec = -3600 * 3;
-const char* ntpServer = "pool.ntp.org";
+const char *ntpServer = "pool.ntp.br";
 
 void timeManagerbegin() {
   configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);
